@@ -1,5 +1,7 @@
 import http.client
 import json
+import time
+
 
 NODES = {}
 conn = http.client.HTTPSConnection("www.instagram.com")
@@ -26,6 +28,7 @@ while True:
             for j in i['node']['edge_threaded_comments']['edges']:
                 if j['node']['owner']['username'] == 'rudeguy9024':
                     NODES[j['node']['text']] = i['node']['text']
+    time.sleep(5)
     if data_json['data']['shortcode_media']['edge_media_to_parent_comment']['page_info']['has_next_page'] != True:
         break
 print(NODES)
